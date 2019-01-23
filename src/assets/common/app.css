@@ -1,0 +1,123 @@
+/** 全局 **/
+body,
+ul,
+li,
+ol,
+dl,
+dd,
+dt,
+caption,
+pre,
+blockquote,
+input,
+textarea,
+select,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+img,
+small,
+form,
+iframe,
+button {
+  margin: 0;
+  padding: 0;
+  font-family: "\5FAE\8F6F\96C5\9ED1", verdana, Arial, Helvetica;
+  font-size: 14px;
+  color: #5B5B5B;
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+a:focus {
+  outline: none;
+}
+a:link {
+  color: #404040;
+  text-decoration: none;
+}
+a:visited {
+  color: #404040;
+  text-decoration: none;
+}
+a:hover {
+  color: #3382AF;
+  text-decoration: none;
+  outline: 0;
+}
+a:active {
+  color: #3382AF;
+  text-decoration: none;
+  outline: 0;
+}
+:focus {
+  outline: 0;
+}
+ul,
+li,
+ol,
+dt,
+dd,
+dl {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+table {
+  empty-cells: show;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+th,
+td {
+  border-collapse: collapse;
+}
+em,
+cite,
+i,
+th {
+  font-style: normal;
+}
+img {
+  border: none;
+}
+.el-input__inner,
+.el-textarea__inner {
+  border-radius: 1px;
+}
+.el-radio__inner,
+.el-checkbox__inner {
+  width: 20px;
+  height: 20px;
+}
+.el-radio__inner::after {
+  width: 10px;
+  height: 10px;
+}
+.el-checkbox__inner::after {
+  width: 7px;
+  height: 12px;
+  top: 0px;
+  left: 5px;
+}
+.el-checkbox__input.is-indeterminate .el-checkbox__inner::before {
+  top: 8px;
+}
+.el-table td,
+.el-table th {
+  padding: 6px 0;
+}
+.el-table .cell {
+  word-break: keep-all;
+  white-space: nowrap; /*强制不换行*/
+  overflow: hidden!important;
+  text-overflow: ellipsis!important;
+  height: 28px;
+}
