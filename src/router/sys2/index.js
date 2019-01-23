@@ -7,25 +7,25 @@ export default [
     iconCls: 'el-icon-menu',
     children: [
       {
-        path: '/groundingList',
+        path: '/baseInfoList',
         name: '项目基础信息表',
         meta: '',
         component: () => import('@/views/member/groundingList')
       },
       {
-        path: '/groundingDetail',
+        path: '/invesInfoList',
         name: '项目投资信息表',
         meta: '',
         component: () => import('@/views/member/groundingDetail')
       },
       {
-        path: '/scatterplot',
+        path: '/salesInfoList',
         name: '项目工程销售表',
         meta: '',
         component: () => import('@/views/d3/Scatterplot')
       },
       {
-        path: '/scatterplot',
+        path: '/finList',
         name: '总部融资信息表',
         meta: '',
         component: () => import('@/views/d3/Scatterplot')
@@ -39,7 +39,7 @@ export default [
     iconCls: 'el-icon-edit',
     children: [
       {
-        path: '/demo',
+        path: '/collectInfo',
         name: '担保信息表',
         meta: '',
         component: () => import('@/views/demo/index')

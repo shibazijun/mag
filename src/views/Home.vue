@@ -179,7 +179,7 @@
 		},
 		created(){
 			let vm = this;
-			console.log('print->>>',this.$router.options.routes);
+			console.log('print->>>',JSON.stringify(this.$router.options.routes));
 			// console.log(this.$route);
 			// this.$router.push({
 			// 	path: '/'
