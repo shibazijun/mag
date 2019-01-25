@@ -1,9 +1,8 @@
-import Home from '@/views/Home'
 export default [
   {
     path: '/',
     name: '',
-    component: Home,
+    component: () => import('@/views/Layout'),
     hidden: true, // nav中隐藏，不希望被看到
     children: [
       {
@@ -27,7 +26,7 @@ export default [
   { // 个人主页
     path: '/',
     name: '',
-    component: Home,
+    component: () => import('@/views/Layout'),
     hidden: true,
     children: [
       {

@@ -10,11 +10,11 @@ import sys5 from '@/router/sys5/index'
 import welcome from '@/router/welcome'
 import notefound from '@/router/notefound'
 
-var routerlist= sys1.concat(sys2,sys3,sys4,sys5)
-
-var must = welcome.concat(notefound)
+export const baseRoute = welcome.concat(sys1,notefound);
+export const rolRoute  = sys1.concat(sys2);
 
 export default new Router({
   mode: 'history',
-  routes: must
+  routes: baseRoute
 })
+

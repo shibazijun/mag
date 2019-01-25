@@ -127,7 +127,7 @@
 	</el-row>
 </template>
 <script type="text/javascript">
-	import apiPath from '@/service/apiPath'
+	import apiPath from '@/utils/apiPath'
   import tools from '../utils/tools'
 	export default {
 		data() {

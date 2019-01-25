@@ -2,7 +2,6 @@ import Vue from 'vue'
 import moment from 'moment'
 
 // refister filter below
-
 // if the data is empty
 /**
 *  {{value | filter-empty}}

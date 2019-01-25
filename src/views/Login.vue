@@ -16,7 +16,8 @@
 </template>
 
 <script>
-  import apiPath from '@/service/apiPath'
+
+  import apiPath from '@/utils/apiPath'
   import {Message} from 'element-ui'
   export default {
     data() {
@@ -59,9 +60,39 @@
           vm.logining = true;
           //去查询用户信息
           sessionStorage.setItem('user', JSON.stringify(vm.form.username));
-          setTimeout(function(){
-            vm.$router.push({path: '/'});
-          },1500);
+
+
+
+          let username = JSON.parse(sessionStorage.getItem('user'));
+          vm.$fetch(apiPath.USER_INFO+'/'+username)
+            .then(data => {
+              vm.$store.commit('changeProfile',data)  //同步用法
+              vm.$store.commit('changeRole',['1000','1101','1102'])  //同步用法
+             // vm.$store.dispatch('事件名',传递的参数)  //异步用法
+
+              let redirect = vm.$route.query.redirect
+              if(!redirect){
+                redirect = ''
+              }
+              vm.$router.push({
+                path: '/'+redirect
+              })
+
+
+            });
+//          return
+//          setTimeout(function(){
+//            //vm.$router.push({path: '/'});
+//            let redirect = vm.$route.query.redirect
+//            if(!redirect){
+//              redirect = ''
+//            }
+//            vm.$router.push({
+//              path: '/'+redirect
+//            })
+//
+//          },1500);
+
           // vm.$fetch(apiPath.USER_INFO+'/'+vm.form.username)
           //     .then(data => {
           //       console.log(data);

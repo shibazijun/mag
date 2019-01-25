@@ -1,93 +1,54 @@
-import Home from '@/views/Home'
 
-{
-  path: '/login',
-    name: 'Login',
-  hidden: true, // 左侧导航栏中隐藏
-  component: () => import('@/views/Login'),
-  iconCls: 'el-icon-message',//图标样式class
-},
-
-
-export default [
+const ls = [
   {
     path: '/',
-    name: '授信信息管理',
-    component: Home,
-    iconCls: 'el-icon-menu',
-    children: [
+    name: 'credit',
+    component: () => import('@/views/Layout'),
+    meta:{title:"增信管理",iconCls: 'el-icon-message',role:['1000']},
+    children:[
       {
-        path: '/creditList',
-        name: '授信信息表',
-        meta: '',
-        component: () => import('@/views/member/groundingList')
+        path: '/',
+        name: 'creditsys',
+        component: () => import('@/views/Layempty'),
+        meta:{title:"授信信息管理",iconCls: 'el-icon-message',role:['1100']},
+        children: [
+            {
+              path: '/creditList',
+              name: 'creditList',
+              meta:{title:"授信信息表",iconCls: 'el-icon-message',role:['1101']},
+              component: () => import('@/views/member/groundingList')
+            },
+            {
+              path: '/creditDetail',
+              name: 'creditDetail',
+              meta:{title:"新增授信",iconCls: 'el-icon-message',role:['1102']},
+              component: () => import('@/views/member/groundingDetail')
+            }
+        ]
       },
       {
-        path: '/creditDetail',
-        name: '新增授信',
-        meta: '',
-        component: () => import('@/views/member/groundingDetail')
-      },
-      {
-        path: '/creditCheckList',
-        name: '复核',
-        meta: '',
-        component: () => import('@/views/d3/Scatterplot')
+        path: 'grounding',
+        redirect:'/credit/grounding/groundingList',
+        name: 'grounding',
+        component: () => import('@/views/Home'),
+        meta:{title:"增信信息管理",iconCls: 'el-icon-message',role:['1200']},
+        children: [
+          {
+            path: '/groundingList',
+            name: 'groundingList',
+            meta:{title:"担保信息表",iconCls: 'el-icon-message',role:['1201']},
+            component: () => import('@/views/demo/index')
+          },
+          {
+            path: '/groundingDetail',
+            name: 'groundingDetail',
+            meta:{title:"担保物增信表",iconCls: 'el-icon-message',role:['1202']},
+            component: () => import('@/views/demo/index')
+          }
+        ]
       }
     ]
-  },
-  {
-    path: '/',
-    name: '增信信息管理',
-    component: Home,
-    iconCls: 'el-icon-edit',
-    children: [
-      {
-        path: '/groundingList',
-        name: '担保信息表',
-        meta: '',
-        component: () => import('@/views/demo/index')
-      },
-      {
-        path: '/groundingDetail',
-        name: '担保物增信表',
-        meta: '',
-        component: () => import('@/views/demo/index')
-      }
-    ]
-  },
-  {
-    path: '/',
-    name: '汇率管理',
-    component: Home,
-    iconCls: 'el-icon-edit',
-    children: [
-      {
-        path: '/exchangeList',
-        name: '汇率维护',
-        meta: '',
-        component: () => import('@/views/demo/index')
-      },
-      {
-        path: '/exchangeCheckList',
-        name: '汇率复核',
-        meta: '',
-        component: () => import('@/views/demo/index')
-      }
-    ]
-  }
-  // {
-  //   path: '/',
-  //   name: '',
-  //   component: Home,
-  //   iconCls: 'el-icon-time',
-  //   leaf: true, // 已经是叶子结点（只有一个节点）
-  //   children: [
-  //     {
-  //       path: '/timeline', //  活动时间图
-  //       name: '汇率管理',
-  //       component: () => import('@/views/timeline/index')
-  //     }
-  //   ]
-  // }
-]
+}]
+
+
+export default ls

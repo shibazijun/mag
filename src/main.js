@@ -10,15 +10,17 @@ import 'babel-polyfill'
 // use element-ui
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+
 //自定义CSS
 import './assets/common/app.css'
+
 // use vue-router
 import VueRouter from 'vue-router'
 
-// use lodash
+// use lodash  数组、对象、字符串等一些工具方法
 import _ from 'lodash'
 
-// use moment
+// use moment  //日期处理工具
 import moment from 'moment'
 
 // 安装图标字体库
@@ -27,15 +29,22 @@ import moment from 'moment'
 // register global filter
 import '@/utils/filters'
 
+//自定义工具
+import Utile from './utils/tools'
+Vue.use(Utile)
+
 // use vuex
-import store from './store/index'
+import store from './store'
+
+
+
 
 // use public.less to enable index.html
 import './assets/common/public.less'
 
 
 // use axios
-import {post,fetch,patch,put} from './service/requestApi.js'
+import {post,fetch,patch,put} from './utils/requestApi.js'
 Vue.prototype.$post=post;
 Vue.prototype.$fetch=fetch;
 Vue.prototype.$patch=patch;
@@ -46,29 +55,12 @@ Vue.prototype.$put=put;
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 
+import '@/utils/permission'
 
-// handle admin, should release
-router.beforeEach((to,from,next) => {
-	if(to.path == '/login'){
-		sessionStorage.removeItem('user');
-	}
-	let user = JSON.parse(sessionStorage.getItem('user'));
-	if(!user && to.path != '/login'){
-	 
-	 
-	 
-		next({path: '/login'})
-	} else{
-		next()
-	}
-})
 
 /* eslint-disable no-new */
 new Vue({
-  // el: '#app',
-  // template: '<App/>',
   router,
   store,
-  // components: { App }
   render: h => h(App)
 }).$mount('#app');

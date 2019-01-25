@@ -2,6 +2,10 @@
 	<div id="welcome">
 		<p>{{username}}</p>
 		<h3>首页欢迎信息 </h3>
+		<h3>{{$store.state.profile}}</h3>
+		<h3>{{$store.state.sysRole}}</h3>
+    <hr>
+		<h3>{{$store.state.subMenuList}}</h3>
 	</div>
 </template>
 <script>

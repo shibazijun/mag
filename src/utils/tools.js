@@ -368,10 +368,25 @@ var tools={
     }
     // str = alt + alt值 + cpenid + cpenid值 + did + did值
     return md5(str);
+  },
+  save (key, value) {
+    localStorage.setItem(key, JSON.stringify(value))
+  },
+  fetch (key) {
+    return JSON.parse(localStorage.getItem(key)) || {}
+  }
+}
+
+function hasPermission(roles, route) {
+  if (route.meta && route.meta.role) {
+    return roles.some(role => route.meta.role.indexOf(role) >= 0)
+  } else {
+    return true
   }
 }
 
 /* 获取数组元素的最大值 */
+/*
 Array.prototype.getMax=function(){
   function sortNumber(a,b){
     return b - a;
@@ -381,7 +396,7 @@ Array.prototype.getMax=function(){
 }
 
 //解决各浏览器中输出不一致的问题
-//0.7875.fixed(3) /*0.788*/
+//0.7875.fixed(3) 0.788
 Number.prototype.round = function(digits) {
   digits = Math.floor(digits);
   if (isNaN(digits) || digits === 0) {
@@ -424,5 +439,52 @@ Number.prototype.formatMoney = function (places, symbol, thousand, decimal) {
 String.prototype.moneyToNumber = function(){
   return parseFloat(this.replace(/[^0-9-.]/g, ''))
 };
+*/
 
-export default tools
+
+
+/**
+ * * 递归过滤异步路由表，返回符合用户角色权限的路由表
+ * * @param asyncRouterMap
+ * * @param roles
+export const filterRouter = function(asyncRouterMap, roles) {
+  roles= roles.sort((a,b)=> Number(a)-Number(b))
+  const accessedRouters = asyncRouterMap.filter(route => {
+    if (hasPermission(roles, route)) {
+      if (route.children && route.children.length) {
+        route.children = filterRouter(route.children, roles)
+      }
+      return true
+    }
+    return false
+  })
+  return accessedRouters
+}
+ * */
+
+import Cookies from 'js-cookie'
+const TokenKey = 'mgmSid'
+
+export function getToken() {
+  return Cookies.get(TokenKey)
+}
+
+export function setToken(token) {
+  return Cookies.set(TokenKey, token)
+}
+
+export function removeToken() {
+  const hostName = '.' + location.hostName
+  return Cookies.remove(TokenKey) && Cookies.remove(TokenKey, {
+    domain: hostName
+  })
+}
+
+
+
+
+export default {
+  install: function (vm) {
+    vm.prototype.$local = tools
+  }
+}

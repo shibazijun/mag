@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-	@import (reference) '../styles/public.less';
+	@import (reference) '../styles-bak/public.less';
 	#not-found{
 		-webkit-border-radius: 5px;
 		border-radius: 5px;

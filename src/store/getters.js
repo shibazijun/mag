@@ -7,5 +7,6 @@ export default {
 	},
 	username: (state,getters,rootState) => {
 		return state.username;
-	}
+	},
+  userinfo: state => state.profile
 }
